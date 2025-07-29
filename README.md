@@ -68,7 +68,8 @@
 <div align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=mohammad&show_icons=true&theme=radical&hide_border=true&border_radius=10" height="150" />
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mohammad&layout=compact&theme=radical&langs_count=6&hide_border=true" height="150" />
-  <img src="https://streak-stats.demolab.com/?user=mohammad&theme=radical&hide_border=true&mode=weekly" height="150" />
+
+
 </div>
 
 
