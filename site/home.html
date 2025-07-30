@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه اصلی - سایت من</title>
+    <!-- فونت وزیر از CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazir-font@v30.1.0/dist/font-face.min.css">
+    <style>
+        /* تم روشن و تیره */
+        :root {
+            --bg-light: #ffffff;
+            --text-light: #000000;
+            --accent-light: #00ff00;
+            --bg-dark: #000000;
+            --text-dark: #ff69b4;
+            --accent-dark: #800080;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Vazir, sans-serif;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* تم‌ها */
+        .light-theme {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+        }
+
+        .dark-theme {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        /* منو */
+        .menu-toggle {
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background-color: var(--accent-light);
+            border: none;
+            border-radius: 5px;
+            color: var(--bg-light);
+            animation: fadeIn 0.5s;
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            right: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: var(--accent-dark);
+            padding-top: 60px;
+            transition: right 0.5s ease;
+            z-index: 999;
+            animation: slideIn 0.5s forwards;
+        }
+
+        .menu.open {
+            right: 0;
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu ul li {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .menu ul li a {
+            color: var(--bg-light);
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .menu ul li a:hover {
+            color: var(--text-light);
+        }
+
+        /* محتوای اصلی */
+        .content {
+            padding: 20px;
+            text-align: center;
+            margin-top: 60px;
+            animation: fadeIn 1s;
+        }
+
+        /* دکمه‌ها */
+        .theme-toggle, .action-btn {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: Vazir, sans-serif;
+            transition: transform 0.3s;
+        }
+
+        .theme-toggle {
+            background-color: var(--accent-light);
+            color: var(--bg-light);
+        }
+
+        .action-btn {
+            background-color: var(--accent-dark);
+            color: var(--bg-light);
+        }
+
+        .theme-toggle:hover, .action-btn:hover {
+            transform: scale(1.1);
+            animation: pulse 0.5s;
+        }
+
+        /* آیکون‌ها با SVG */
+        .menu-toggle svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .theme-toggle svg, .action-btn svg {
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        /* انیمیشن‌ها */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { right: -250px; }
+            to { right: 0; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <!-- دکمه منو -->
+    <button class="menu-toggle" onclick="toggleMenu()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+    </button>
+
+    <!-- منو -->
+    <div class="menu" id="menu">
+        <ul>
+            <li><a href="#home">خانه</a></li>
+            <li><a href="#about">درباره ما</a></li>
+            <li><a href="#services">خدمات</a></li>
+            <li><a href="#contact">تماس</a></li>
+        </ul>
+    </div>
+
+    <!-- محتوای اصلی -->
+    <div class="content">
+        <h1>خوش آمدید به سایت من!</h1>
+        <p>این یک صفحه نمونه با طراحی زیبا و انیمیشن‌های جذاب است.</p>
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5" />
+                <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42m12.72-12.72l1.42-1.42" />
+            </svg>
+            تعویض تم
+        </button>
+        <button class="action-btn" onclick="alert('اقدام انجام شد!')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 13l4 4L19 7" />
+            </svg>
+            اقدام
+        </button>
+    </div>
+
+    <script>
+        // تابع باز و بسته کردن منو
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('open');
+        }
+
+        // تابع تعویض تم
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('light-theme');
+            body.classList.toggle('dark-theme');
+            const buttons = document.querySelectorAll('.theme-toggle, .action-btn');
+            buttons.forEach(btn => {
+                if (body.classList.contains('dark-theme')) {
+                    btn.style.backgroundColor = '#800080';
+                    btn.style.color = '#ff69b4';
+                } else {
+                    btn.style.backgroundColor = '#00ff00';
+                    btn.style.color = '#ffffff';
+                }
+            });
+        }
+
+        // بستن منو با کلیک خارج از آن
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('menu');
+            const toggle = document.querySelector('.menu-toggle');
+            if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('open')) {
+                menu.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+  </html>
