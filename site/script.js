@@ -1,25 +1,24 @@
-// تغییر تم تاریک/روشن
-const themeToggle = document.getElementById("themeToggle");
-themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark-theme");
+// باز و بسته شدن منوی موبایل
+document.getElementById('menu-toggle').addEventListener('click', function() {
+    document.querySelector('nav ul').classList.toggle('show');
 });
 
-// انیمیشن هنگام اسکرول
-const animatedItems = document.querySelectorAll(".fade-in");
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-}, { threshold: 0.3 });
+// هایلایت آیتم فعال منو
+const sections = document.querySelectorAll("section");
+const navLi = document.querySelectorAll("nav ul li a");
 
-animatedItems.forEach((item) => observer.observe(item));
-
-// منوی همبرگری موبایل
-const burgerMenu = document.getElementById("burgerMenu");
-const navLinks = document.getElementById("navLinks");
-
-burgerMenu.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
+window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+            current = section.getAttribute("id");
+        }
+    });
+    navLi.forEach((a) => {
+        a.classList.remove("active");
+        if (a.getAttribute("href") === `#${current}`) {
+            a.classList.add("active");
+        }
+    });
 });
