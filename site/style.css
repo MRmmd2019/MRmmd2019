@@ -331,3 +331,81 @@ html, body {
   .subs-logo { height: 56px; }
   .subs-logo img { max-height: 28px; }
 }
+
+/* ====== کد اصلی تو ====== */
+/* Design tokens */
+:root {
+  --bg: #0b0f14;
+  --surface: rgba(255,255,255,0.06);
+  --text: #e6edf3;
+  --muted: #a9b1bb;
+  --brand: #4f9cff;
+  --brand-2: #8a5cff;
+  --ok: #19c37d;
+  --warn: #f39c12;
+  --danger: #ff4d4f;
+  --radius: 16px;
+  --gap: 24px;
+  --blur: 14px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+  --border: 1px solid rgba(255,255,255,0.12);
+}
+/* حالت روشن */
+:root.light {
+  --bg: #f6f8fa;
+  --surface: rgba(0,0,0,0.04);
+  --text: #0b0f14;
+  --muted: #4b5563;
+  --brand: #1f6feb;
+  --brand-2: #7c3aed;
+  --shadow: 0 8px 28px rgba(2,6,23,0.12);
+  --border: 1px solid rgba(2,6,23,0.08);
+}
+
+/* استایل‌های عمومی */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: "Vazirmatn", system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ... بقیه کد اصلی بدون تغییر ... */
+
+/* ====== واکنش‌گرایی پیشرفته ====== */
+@media (max-width: 1200px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-art { order: -1; height: 280px; margin-bottom: 20px; }
+}
+
+@media (max-width: 992px) {
+  .grid.three { grid-template-columns: repeat(2, 1fr); }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .site-header { flex-wrap: wrap; gap: 12px; }
+}
+
+@media (max-width: 768px) {
+  .grid.two, .grid.three, .stats { grid-template-columns: 1fr; }
+  .hero { text-align: center; }
+  .cta { justify-content: center; }
+  .site-header { margin: 8px; padding: 8px 12px; }
+  .logo-circle { width: 50px; height: 50px; }
+  .nav-btn, .icon-btn { width: 40px; height: 40px; }
+}
+
+@media (max-width: 576px) {
+  .title { font-size: 1.4rem; }
+  .subtitle { font-size: 0.9rem; }
+  .btn { padding: 10px 14px; font-size: 0.9rem; }
+  .stats .num { font-size: 1.3rem; }
+  .subs-logos { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 400px) {
+  .title { font-size: 1.2rem; }
+  .btn { width: 100%; justify-content: center; }
+  .hero-art { height: 200px; }
+}
