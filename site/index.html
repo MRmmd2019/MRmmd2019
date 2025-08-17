@@ -248,23 +248,23 @@
         <p>برای همکاری یا مشاوره فنی پیام بده.</p>
       </div>
       <div class="grid two">
-        <form class="card form" onsubmit="return false;">
-          <div class="field">
-            <input id="name" type="text" required />
-            <label for="name">نام</label>
-          </div>
-          <div class="field">
-            <input id="email" type="email" required />
-            <label for="email">ایمیل</label>
-          </div>
-          <div class="field">
-            <textarea id="msg" rows="5" required></textarea>
-            <label for="msg">پیام</label>
-          </div>
-          <button class="btn primary w-100" id="sendBtn">
-            <i class="fa-solid fa-paper-plane-top fa-rotate-270"></i> ارسال پیام
-          </button>
-          <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+        <form class="card form" action="https://formspree.io/f/xeozwaod" method="POST">
+            <div class="field">
+                <input id="name" name="name" type="text" required />
+                <label for="name">نام</label>
+            </div>
+            <div class="field">
+                <input id="email" name="email" type="email" required />
+                <label for="email">ایمیل</label>
+            </div>
+            <div class="field">
+                <textarea id="msg" name="message" rows="5" required></textarea>
+                <label for="msg">پیام</label>
+            </div>
+            <button class="btn primary w-100" type="submit">
+                <i class="fa-solid fa-paper-plane-top fa-rotate-270"></i> ارسال پیام
+            </button>
+            <p class="form-note" id="formNote" role="status" aria-live="polite"></p>  
         </form>
 
         <aside class="card contact-info">
@@ -295,4 +295,5 @@
 
   </footer>
 </body>
+
 </html>
